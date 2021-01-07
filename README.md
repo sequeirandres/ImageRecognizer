@@ -1,10 +1,7 @@
 # Entrenar una Red Neuronal para detectar y clasificar varios objetos usando TensorFlow (GPU) en Linux o Windos.
 
-
-
-
 ## Introduction
-El propósito de este documento es explicar cómo entrenar su propio clasificador de detección de objetos de red neuronal convolucional para múltiples objetos, comenzando desde cero. Al final de este documento, tendrá un programa que puede identificar y dibujar cuadros alrededor de objetos específicos en imágenes(.jpg), videos(.mp4) o en una cámara web(streaming).
+El propósito de este documento es explicar cómo entrenar su propio clasificador de detección de objetos de [red neuronal convolucional](https://www.juanbarrios.com/redes-neurales-convolucionales/#:~:text=Las%20Redes%20neuronales%20convolucionales%20son,V1)%20de%20un%20cerebro%20biol%C3%B3gico.) para múltiples objetos, comenzando desde cero. Al final de este documento, tendrá un programa que puede identificar y dibujar cuadros alrededor de objetos específicos en imágenes(.jpg), videos(.mp4) o en una cámara web(streaming).
 Este Documento está escrito para ubuntu 18.04 lts (64-bits). Tambien funcionará para Windows 10. El procedimiento general también se puede utilizar para los sistemas operativos Linux, pero las rutas de archivo y los comandos de instalación de paquetes deberán cambiar en consecuencia. Para el entrenamiento usé TensorFlow-GPU v1.5, pero es probable que funcione para futuras versiones de TensorFlow como  GPU-2.3 Cuda.
 TensorFlow-GPU permite que la PC use la tarjeta de video para proporcionar potencia de procesamiento adicional durante el entrenamiento, por lo que se usará para este proposito. En mi experiencia, usar TensorFlow-GPU en lugar de TensorFlow-cpu regular reduce el tiempo de entrenamiento en un factor considerable, desde 10 a 100 veces mas rápido. La versión solo para CPU de TensorFlow también se puede usar para este instructivo, pero llevará más tiempo en el entrenamiendo de la red neuronal. El tiempo de penderá de la cantidad de imagenes que se utilice para entrenar y la cantidad de objetos que se desea clasificar. Si usa TensorFlow solo para CPU, no necesita instalar CUDA.
 
@@ -44,13 +41,25 @@ Se desea recuadrar sobre una imagen o video un rectangular que indica el objeto 
                 4.2.1. paquetes requeridos  python 3.5    matplotlib
 4.3. Generar los archivos CSV, para entrenar y para testear. 
 
+## 1.- Instalar los paquetes necesarios y crear un entorno de trabajo virtual.
+instalar [Anaconda](https://www.anaconda.com/products/individual)
+Una vez intalado crear un nuevo entorno de trabajo desde la terminal.
 
 
-## 1.- Instalar los paquetes necesarios
--instalar [Anaconda](https://www.anaconda.com/products/individual)
+Instalar los siguientes paquetes necesarios 
+```
+(CNN) $ conda install -c anaconda protobuf
+(CNN) $ pip install pillow
+(CNN) $ pip install lxml
+(CNN) $ pip install Cython
+(CNN) $ pip install contextlib2
+(CNN) $ pip install jupyter
+(CNN) $ pip install matplotlib
+(CNN) $ pip install pandas
+(CNN) $ pip install opencv-python
 
+(Nota:Los paquetes ‘pandas’ and ‘opencv-python’  no son necesarios para TensorFlow, pero son usados por los difernetes scripts en python para generar los archivos TFRecords y para trabajar con las imagenes, videos y webcam.
 
-Set up new Anaconda virtual environment
 
 
 
