@@ -182,6 +182,22 @@ sin embargo existes muchos modelos de redes neuronales que se pueden descargar y
 
 ### 5.1. Reconocimiento sobre imagenes
 
+Deteccion de un objeto 
+
+
+<p align="center">
+  <img src="result/test2_detected.jpg">
+</p>
+
+
+
+Resultado de una imagen con los 3 objetos a detectar
+
+<p align="center">
+  <img src="result/test_detected.jpg">
+</p>
+
+
 ### 5.2 Reconociemiento sobre videos
 
 
