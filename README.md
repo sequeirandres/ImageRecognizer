@@ -106,6 +106,48 @@ Finalmente, correr los siguientes comandos desde la terminal :  models/research/
 (CNN) models/research $ python setup.py install
 ```
 
+## 2 Crear los archivos necesarios
+En esta etapa se procede a crear los archivos requeridos para entrenar el modelo de red neuronal convolucional. Para ello se requiere muchas imagenes desde diferntes 
+. Se crearan dos carpetas, una donde contedrá todas las imagenes que se utilizaran para entrenar y otra carpeta test que utiliza tensorFlow para corregir mediante gradiente descendiente los diferentes pesos.
+
+### 2.1 Imagenes y labels
+Sacar fotos, bajarlas de google etc. Las imagenes deben ser claras y varibles, cuantas mas imagenes el modelo podrá predecir mejor. Un vez que se tenga todas la imagenEs donde aparecen los objetos que se desean detectar, se requiere generar
+
+
+
+### 2.2 Crear archivos xlm a paratir de todas imagenes
+
+Sacar fotos,  
+
+### 2.3 Crear los archivos tf.records 
+Los archuvos .record contiene la informacion de todas las imagenes junto a todas los lugares donde aparecen los objetos con las etiquetas que permiten identificar que objetos hay en cada imagen y que debe entrenar nuestro modelo de CNN.
+```
+(CNN) $ python xml_to_csv.py --inputs=images/train --output=images
+
+```
+```
+(CNN) $ python xml_to_csv.py --inputs=images/test --output=images
+
+```
+Estas lineas generan dos archivos test_labels.csv y train_labels.csv dentro de la carpeta imagenes
+
+
+## 3 Entrenar el modelo 
+
+
+
+
+
+## 4 exportar el modelo entrenado
+
+## 5 Hacer reconocimiento de objetos sobre imagenes
+
+### 5.1. Reconocimiento sobre imagenes
+
+### 5.2 Reconociemiento sobre videos
+
+
+### 5.3 Reconociemiento en tiempo real con webcam 
 
 
 
