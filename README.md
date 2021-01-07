@@ -169,7 +169,7 @@ Successfully created the Records files: /test.record
  
 Para este caso se utilizará una red  neuronal convolucional pre-entrenada, es decir, las redes neuronales poseen multiples capas y multiples conexiones de capa a capa.
 
-para reducir el timpo de entrenamiento se utiliza el siguiente modelo [CNN]()
+para reducir el timpo de entrenamiento se utiliza el siguiente modelo [CNN](https://github.com/sequeirandres/ModeloCNN)
 
 sin embargo existes muchos modelos de redes neuronales que se pueden descargar y utilizar desde [CNN](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md)
  
