@@ -22,17 +22,7 @@ Se desea recuadrar sobre una imagen o video un rectangular que indica el objeto 
 
  En este apartado se describen los paquetes, programas y pasos a seguir para entrenar una red neuronal convolucionar y detectar los objetos aprendidos.
 
-## Los pasos para crear, entrenar una red y hacer predicciones son las siguientes : 
-1. [Instalar Anaconda, CUDA, and cuDNN](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#1-install-anaconda-cuda-and-cudnn)
-2. [Setting up the Object Detection directory structure and Anaconda Virtual Environment](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#2-set-up-tensorflow-directory-and-anaconda-virtual-environment)
-3. [Gathering and labeling pictures](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#3-gather-and-label-pictures)
-4. [Generating training data](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#4-generate-training-data)
-5. [Creating a label map and configuring training](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#5-create-label-map-and-configure-training)
-6. [Training](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#6-run-the-training)
-7. [Exporting the inference graph](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#7-export-inference-graph)
-8. [Testing and using your newly trained object detection classifier](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#8-use-your-newly-trained-object-detection-classifier)
-
-1. Instatalar los paquetes necesarios.
+1. Configuraciones general y entorno.
 2. Generar el entorno (enviroment) para trabajar con la terminal. 
 3. Utilizar un modelo pre-entrenado que permite reconocer objetos
 4. Prepara los datos para entrenamiento.
@@ -134,12 +124,12 @@ para iniciar el programa desde la terminal parado sobre el directorio
 ```
 (CNN) $ python labelImg.py
 ```
-
-
+Imagen de labImagen etiquentando un objeto dentro de una imagen
 <p align="center">
-  <img src="doc/demo1.jpg">
+  <img src="result/demo1.jpg">
 </p>
 
+Asi se etiqueta cada una de las imagenes
 
 
 ### 2.2 Crear archivos xlm a paratir de todas imagenes
