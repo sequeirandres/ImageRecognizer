@@ -1,4 +1,4 @@
-# Entrenar una Red Neuronal para detectar y clasificar varios objetos usando TensorFlow (GPU) en Linux o Windos.
+# Entrenar una Red Neuronal para detectar y clasificar varios objetos usando TensorFlow (GPU) en Linux o Windows.
 
 ## Introduction
 El propósito de este documento es explicar cómo entrenar su propio clasificador de detección de objetos de [red neuronal convolucional](https://www.juanbarrios.com/redes-neurales-convolucionales) para múltiples objetos, comenzando desde cero. Al final de este documento, tendrá un programa que puede identificar y dibujar cuadros alrededor de objetos específicos en imágenes(.jpg), videos(.mp4) o en una cámara web(streaming).
@@ -42,8 +42,12 @@ Se desea recuadrar sobre una imagen o video un rectangular que indica el objeto 
 4.3. Generar los archivos CSV, para entrenar y para testear. 
 
 ## 1.a- Instalar los paquetes necesarios y crear un entorno de trabajo virtual.
-Instalar [Anaconda](https://www.anaconda.com/products/individual) para ubuntu o windows
-Instalar [python](https://www.python.org/downloads/) 
+
+Instalar [python](https://www.python.org/downloads/) ( recomiendo python==3.5 )
+
+Instalar [Anaconda](https://www.anaconda.com/products/individual) para ubuntu o windows 
+
+Instalar [cuda toolkits](https://developer.nvidia.com/CUDA-toolkit), permite utilizar los nucleos de la GPU como procesamiento central. 
 
 Una vez instalado crear un nuevo entorno de trabajo desde la terminal
 
@@ -70,11 +74,41 @@ Instalar los siguientes paquetes necesarios
 
 (Nota:Los paquetes ‘pandas’ and ‘opencv-python’  no son necesarios para TensorFlow, pero son usados por los difernetes scripts en python para generar los archivos TFRecords y para trabajar con las imagenes, videos y webcam.
 ```
+en caso de tener numpy==1.19 (no es compatible ), instalar numpy 1.18.
+
+```
+(CNN) $ pip install numpy==1.18
+```
+
 
 ## 1b. Configurar los PYTHONPATH environment
 ```
-(tensorflow1) C:\> set PYTHONPATH=C:\tensorflow1\models;C:\tensorflow1\models\research;C:\tensorflow1\models\research\slim
+(CNN) $ set PYTHONPATH=CNN/models; CNN/models/research; CNN/models/research/slim
 ```
+
+## 1c. Compilar Protobufs y correr el setup.py
+
+A continuación, compilar los archivos Protobuf, que utiliza TensorFlow-GPU para configurar el modelo y los parámetros de entrenamiento.
+
+En la terminal de unix o en la Prompt de anaconda, cambiar de directorio a  /models/research:
+
+```
+(CNN) $ cd models/research
+```
+Ejecutar las siguiente linas de comando para instalar los paquetes de object_detection que seran requeridos para entrenar el modelo y reconocer patrones de imagenes que permite detectar objetos.
+```
+protoc --python_out=. ./object_detection/protos/anchor_generator.proto ./object_detection/protos/argmax_matcher.proto ./object_detection/protos/bipartite_matcher.proto ./object_detection/protos/box_coder.proto ./object_detection/protos/box_predictor.proto ./object_detection/protos/eval.proto ./object_detection/protos/faster_rcnn.proto ./object_detection/protos/faster_rcnn_box_coder.proto .\object_detection\protos\grid_anchor_generator.proto .\object_detection\protos\hyperparams.proto ./object_detection/protos/image_resizer.proto ./object_detection\protos\input_reader.proto .\object_detection\protos\losses.proto .\object_detection\protos\matcher.proto ./object_detection/protos/mean_stddev_box_coder.proto .\object_detection\protos\model.proto .\object_detection\protos\optimizer.proto .\object_detection\protos\pipeline.proto ./object_detection/protos/post_processing.proto ./object_detection\protos\preprocessor.proto .\object_detection\protos\region_similarity_calculator.proto ./object_detection/protos/square_box_coder.proto ./object_detection\protos\ssd.proto .\object_detection\protos\ssd_anchor_generator.proto ./object_detection/protos/string_int_label_map.proto ./object_detection/protos/train.proto ./object_detection\protos\keypoint_box_coder.proto ./object_detection/protos/multiscale_anchor_generator.proto ./object_detection/protos/graph_rewriter.proto ./object_detection/protos/calibration.proto ./object_detection/protos/flexible_grid_anchor_generator.proto
+```
+Finalmente, correr los siguientes comandos desde la terminal :  models/research/object_detection:
+
+```
+(CNN) models/research $ python setup.py build
+(CNN) models/research $ python setup.py install
+```
+
+
+
+
 
 
 
