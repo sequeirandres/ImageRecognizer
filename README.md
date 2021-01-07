@@ -46,5 +46,16 @@ Se desea recuadrar sobre una imagen o video un rectangular que indica el objeto 
 
 
 
-## 1.- Instatalar los paquetes necesarios.
+## 1.- Instalar los paquetes necesarios
+-instalar [Anaconda](https://www.anaconda.com/products/individual)
+
+
+Set up new Anaconda virtual environment
+
+
+
+
+
+
+
 
