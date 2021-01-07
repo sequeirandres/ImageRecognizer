@@ -41,7 +41,10 @@ Se desea recuadrar sobre una imagen o video un rectangular que indica el objeto 
                 4.2.1. paquetes requeridos  python 3.5    matplotlib
 4.3. Generar los archivos CSV, para entrenar y para testear. 
 
-## 1.a- Instalar los paquetes necesarios y crear un entorno de trabajo virtual.
+## Configuraciones generales y entorno
+En esta primer etapa se describen los programa y paquetes requeridos para comenzar-
+
+### 1.a- Instalar los paquetes necesarios y crear un entorno de trabajo virtual.
 
 Instalar [python](https://www.python.org/downloads/) ( recomiendo python==3.5 )
 
@@ -81,12 +84,12 @@ en caso de tener numpy==1.19 (no es compatible ), instalar numpy 1.18.
 ```
 
 
-## 1b. Configurar los PYTHONPATH environment
+### 1.b Configurar los PYTHONPATH environment
 ```
 (CNN) $ set PYTHONPATH=CNN/models; CNN/models/research; CNN/models/research/slim
 ```
 
-## 1c. Compilar Protobufs y correr el setup.py
+### 1.c Compilar Protobufs y correr el setup.py
 
 A continuación, compilar los archivos Protobuf, que utiliza TensorFlow-GPU para configurar el modelo y los parámetros de entrenamiento.
 
@@ -107,11 +110,35 @@ Finalmente, correr los siguientes comandos desde la terminal :  models/research/
 ```
 
 ## 2 Crear los archivos necesarios
-En esta etapa se procede a crear los archivos requeridos para entrenar el modelo de red neuronal convolucional. Para ello se requiere muchas imagenes desde diferntes 
-. Se crearan dos carpetas, una donde contedrá todas las imagenes que se utilizaran para entrenar y otra carpeta test que utiliza tensorFlow para corregir mediante gradiente descendiente los diferentes pesos.
+En esta etapa se procede a crear los archivos requeridos para entrenar el modelo de red neuronal convolucional. Para ello se requiere muchas imagenes. Se aconseja un minimo de 100 imagenes con un tamaño de 1000x1000 pixeles. Tener en cuenta que cuanto mayor pixles aumentará drasticamente el tiempo de entrnamiento. Se crearan dos carpetas, una donde contedrá todas las imagenes que se utilizaran para entrenar y otra carpeta test que utiliza tensorFlow para corregir mediante gradiente descendiente los diferentes pesos.
 
 ### 2.1 Imagenes y labels
-Sacar fotos, bajarlas de google etc. Las imagenes deben ser claras y varibles, cuantas mas imagenes el modelo podrá predecir mejor. Un vez que se tenga todas la imagenEs donde aparecen los objetos que se desean detectar, se requiere generar
+Sacar fotos, bajarlas de google etc. Las imagenes deben ser claras y varibles, cuantas mas imagenes el modelo podrá predecir mejor. Un vez que se tenga todas la imagenEs donde aparecen los objetos que se desean detectar, se requiere generar un archivos xlm por cada una de las imagenes. Para ello se utilizará el programa [labelImag]( https://github.com/sequeirandres/LabeIImage)
+Se recomienda utilizar el  80% de las imagenes para train y el 20% para test. Para mi caso, deseo identificar 3 objetos por ende mis labels van a ser :
+
+a.- esp8266
+
+b.- hcsr04
+
+c.- programador
+
+Requerimientos para labelimg:
+
+1.- python==3.5 o supeior
+
+2.- opencv-python
+
+
+para iniciar el programa desde la terminal parado sobre el directorio 
+
+```
+(CNN) $ python labelImg.py
+```
+
+
+<p align="center">
+  <img src="doc/demo1.jpg">
+</p>
 
 
 
@@ -124,17 +151,17 @@ Los archuvos .record contiene la informacion de todas las imagenes junto a todas
 ```
 (CNN) $ python xml_to_csv.py --inputs=images/train --output=images
 
+Successfully converted xml to csv.
 ```
 ```
 (CNN) $ python xml_to_csv.py --inputs=images/test --output=images
 
+Successfully converted xml to csv.
 ```
 Estas lineas generan dos archivos test_labels.csv y train_labels.csv dentro de la carpeta imagenes
 
 
 ## 3 Entrenar el modelo 
-
-
 
 
 
