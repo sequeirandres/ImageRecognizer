@@ -129,15 +129,13 @@ Imagen de labImagen etiquentando un objeto dentro de una imagen
   <img src="result/demo1.jpg">
 </p>
 
-Asi se etiqueta cada una de las imagenes
+Asi se etiqueta cada uno de los objetos para cada una de las imagenes correspondientes.
 
 
 ### 2.2 Crear archivos xlm a paratir de todas imagenes
 
-Sacar fotos,  
+A partir de los archivos generado xlm se procede a generar un solo archivo test.csv que contiene toda la informacion de todos los archivos xlm. 
 
-### 2.3 Crear los archivos tf.records 
-Los archuvos .record contiene la informacion de todas las imagenes junto a todas los lugares donde aparecen los objetos con las etiquetas que permiten identificar que objetos hay en cada imagen y que debe entrenar nuestro modelo de CNN.
 ```
 (CNN) $ python xml_to_csv.py --inputs=images/train --output=images
 
@@ -151,8 +149,31 @@ Successfully converted xml to csv.
 Estas lineas generan dos archivos test_labels.csv y train_labels.csv dentro de la carpeta imagenes
 
 
-## 3 Entrenar el modelo 
+### 2.4 Crear los archivos tf.records 
+Los archivos .record contiene la informacion de todas las imagenes junto a todas los lugares donde aparecen los objetos con las etiquetas que permiten identificar que objetos hay en cada imagen y que debe entrenar nuestro modelo de CNN.
 
+```
+(CNN)  $ python generate_tfrecord.py --csv_input=images/train_labels.csv --image_dir=images/train --output_path=train.record
+Successfully created the Records files: /train.record
+```
+
+```
+(CNN)  $ python generate_tfrecord.py --csv_input=images/test_labels.csv --image_dir=images/test --output_path=test.record
+Successfully created the Records files: /test.record
+```
+
+## 3 Crear y entrenar  el modelo CNN
+
+
+### 3.1 Obtencion de modelo de red neuraonl convolucional
+ 
+Para este caso se utilizará una red  neuronal convolucional pre-entrenada, es decir, las redes neuronales poseen multiples capas y multiples conexiones de capa a capa.
+
+para reducir el timpo de entrenamiento se utiliza el siguiente modelo [CNN]()
+
+sin embargo existes muchos modelos de redes neuronales que se pueden descargar y utilizar desde [CNN](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md)
+ 
+###
 
 
 ## 4 exportar el modelo entrenado
