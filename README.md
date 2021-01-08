@@ -184,6 +184,10 @@ sin embargo existes muchos modelos de redes neuronales que se pueden descargar y
 
 Deteccion de un objeto 
 
+```
+(CNN)  $ python Object_detection_image.py
+```
+
 
 <p align="center">
   <img src="result/test2_detected.jpg">
